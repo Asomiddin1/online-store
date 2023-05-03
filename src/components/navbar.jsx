@@ -11,8 +11,8 @@ const Navbar = () => {
       <h1 className='text-white text-[20px] pl-6'>Online Store.Uz </h1>
       </div>
       <div className='w-[35%] sm:block  ' >
-        <input className='w-[50%] input_nav outline-none px-2 py-1' placeholder='Qidirish...' type="search" />
-        <button className='text-white bg-[#289ee2] py-1 input_left_nav px-2'> <FontAwesomeIcon icon={faSearch} /> Qidirish</button>
+        <input className='w-[50%] input_nav outline-none px-2 py-1' placeholder='Search...' type="search" />
+        <button className='text-white bg-[#289ee2] py-1 input_left_nav px-2'> <FontAwesomeIcon icon={faSearch} /> Search</button>
       </div>
 
       <div className='w-[35%] flex justify-around'>
