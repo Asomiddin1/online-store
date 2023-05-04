@@ -11,11 +11,20 @@ function App() {
 
 
   return (
-    <div className="container ">
+    <div className="w-full absolute">
+    <div className='top-0 fixed w-full z-50'>
     <Navbar />
     <Navigator />
-     <LazyLoad />
+    </div>
+    
+    <div className='w-full relative top-[128px]  sm:top-[108px]'> 
+    <LazyLoad />
      <Card />
+    </div>
+
+     <div className='w-full h-[1000px]'>
+ere
+     </div>
     </div>
   );
   }

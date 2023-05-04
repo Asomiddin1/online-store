@@ -1,6 +1,6 @@
 import axios from './api'
 
-const AuthService = {
+export const AuthService = {
 	async userRegister(user) {
 		const {data} = await axios.post('/users', {user})
 		return data
