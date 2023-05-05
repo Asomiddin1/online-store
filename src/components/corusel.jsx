@@ -15,17 +15,17 @@ export default class LazyLoad extends Component {
       initialSlide: 2
     };
     return (
-      <div className="w-full">
+      <div className="w-full  h-full relative right-[-3px] sm:right-0">
        
-        <Slider {...settings}>
+        <Slider className="sm:h-full h-[240px]" {...settings}>
           <div className="">
-         <img className="w-full" src={require('./images/TKekmDopC1.jpg')} alt="" />
+         <img className="w-full sm:h-full h-[230px]" src={require('./images/TKekmDopC1.jpg')} alt="" />
           </div>
           <div>
-          <img className="w-full"  src={require('./images/iw7naDSX74.jpg')} alt="" />
+          <img className="w-full sm:h-full h-[230px]"  src={require('./images/iw7naDSX74.jpg')} alt="" />
           </div>
           <div>
-          <img className="w-full"  src={require('./images/xH7GoX9z5U.jpg')} alt="" />
+          <img className="w-full sm:h-full h-[230px]"  src={require('./images/xH7GoX9z5U.jpg')} alt="" />
           </div>
         </Slider>
       </div>
