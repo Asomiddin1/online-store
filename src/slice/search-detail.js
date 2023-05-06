@@ -9,9 +9,11 @@ export const authSlice = createSlice({
 	name: 'serP',
 	initialState,
 	reducers: {
-		
+		searchDetail: state => {
+			state.isLoading = true
+		},
 	},
 })
 
-export const {signUserFailure, signUserStart, signUserSuccess, logoutUser} = authSlice.actions
+export const {} = authSlice.actions
 export default authSlice.reducer;

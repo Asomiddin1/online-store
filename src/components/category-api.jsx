@@ -2,38 +2,46 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faX } from '@fortawesome/free-solid-svg-icons';
-import Proba from './proba';
 import Loading from './loading';
 
 
-const Card = ({MainOptions}) => {
+
+const CategoryApi = ({link}) => {
 
   const [data, setdata] = useState([])
   const [like, setLike] = useState(false)
   const [oneBuy, setOneBuy] = useState(false)
-  const [isLoading , setIsloading] = useState(false) 
+  const [isLoading, setIsloading] = useState(false)
 
 
   const getData = async () => {
-    const options = MainOptions;
+    const options = {
+      method: 'GET',
+      url: `https://cartify.p.rapidapi.com/products/p${link}`,
+      headers: {
+        'X-RapidAPI-Key': '486197635emsh65d92c643f4c7c0p152a85jsna33724277b9f',
+        'X-RapidAPI-Host': 'cartify.p.rapidapi.com'
+      }
+    };
     setIsloading(true)
-
     try {
       const response = await axios.request(options);
-      const { data } = response;
-    
-      const newArr = data.map(item => ({
-        category:item.category,
-        id:item.id,
-        image:item.image,
-        price:item.price+'0' +' ' + 'UZS',
-        title:item.title,
-        likes:like
-       }))
-  
-      setdata(newArr)
+      const { data } = response
+      const { products } = data
+      
+
+      const newArr = products.map(item => ({
+        category: item.category,
+        id: item._id,
+        image: item.image,
+        price: item.price + '0' + ' ' + 'UZS',
+        title: item.title,
+        v:item._v,
+        likes: like
+      }))
+      setdata(newArr);
       setIsloading(false)
-    //  console.log(data);
+
 
     } catch (error) {
       console.error(error);
@@ -48,20 +56,20 @@ const Card = ({MainOptions}) => {
 
   const showLike = (id) => {
     setdata((prev) => {
-     return prev.forEach((item)=>{
-      if(item.id === id ){
-        return setdata(({...prev , likes:setLike(true)}))
-      }
-     })
+      return prev.forEach((item) => {
+        if (item.id === id) {
+          return setdata(({ ...prev, likes: setLike(true) }))
+        }
+      })
     })
   }
 
   // const showLike = (id) => {
-  
+
   //        console.log( id);
   // }
 
-  const showOnebuy = ()=>{
+  const showOnebuy = () => {
     setOneBuy(true)
   }
 
@@ -112,4 +120,5 @@ const Card = ({MainOptions}) => {
   )
 }
 
-export default Card
+
+export default CategoryApi
