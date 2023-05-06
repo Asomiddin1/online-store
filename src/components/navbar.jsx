@@ -29,9 +29,10 @@ const Navbar = () => {
 
           <div>
             <FontAwesomeIcon onClick={userHandler} icon={faUser} className='fa-2x text-white' />
-          {user && <div className='absolute w-[100px] ml-[-30px] text-center py-3 bg-[#289ee2]'>
-              <p className='text-white'>Login</p>
-              <p className='text-white'>Register</p>
+          {user && <div className='absolute w-[100px] ml-[-70px] mt-3 rounded text-center bg-[#289ee2]'>
+              <p className='text-white py-2 h-full hover:bg-[blue] hover:rounded'>Login</p>
+              <hr  className=' '/>
+              <p className='text-white  py-2 h-full hover:bg-[blue] hover:rounded'>Register</p>
             </div>}
           </div>
           <Link to='/basket'><FontAwesomeIcon icon={faCartShopping} className='fa-2x text-white' /></Link>

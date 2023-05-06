@@ -78,7 +78,7 @@ const Navigator = () => {
 
 
   return (
-    <div className='flex w-full justify-around  sm:justify-items-center  justify-end py-3 bg-[#fff] border-b-2 border-b-[#717181]' >
+    <div className='flex w-full sm:justify-around  sm:justify-items-center  justify-end py-3 bg-[#fff] border-b-2 border-b-[#717181]' >
       <div className='munna h-[10px] w-[30px]' onClick={showMenu}>
         <div className='munna  h-[5px] bg-black mt-1 rounded-[2px]' ></div>
         <div className='munna h-[5px] bg-black mt-1 rounded-[2px]' ></div>
