@@ -39,7 +39,14 @@ const CategoryApi = ({link}) => {
         v:item._v,
         likes: false
       }))
-      setdata(newArr);
+    
+      const kkk = JSON.parse(localStorage.getItem('like_card_category'))
+
+      if(kkk){
+       setdata(kkk);
+      }else{
+       setdata(newArr)
+      }
       setIsloading(false)
 
 
@@ -62,7 +69,8 @@ const CategoryApi = ({link}) => {
 			}
 			return item
 		})
-		setdata(newArr)
+    localStorage.setItem('like_card_category' , JSON.stringify(newArr))
+    setdata(newArr)
 	}
 
 
