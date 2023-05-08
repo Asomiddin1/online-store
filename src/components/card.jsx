@@ -30,7 +30,13 @@ const Card = ({ MainOptions }) => {
         likes: false,
       }));
 
-      setdata(newArr);
+      const kkk = JSON.parse(localStorage.getItem('like_card'))
+
+     if(kkk){
+      setdata(kkk);
+     }else{
+      setdata(newArr)
+     }
       setIsloading(false);
       //  console.log(data);
     } catch (error) {
@@ -41,15 +47,24 @@ const Card = ({ MainOptions }) => {
     getData();
   }, []);
 
+
+
+
   const onToggleProp = (id, prop) => {
-		console.log(prop , id);
-		const newArr = data.map(item => {
+
+  
+ const newArr = data.map(item => {
+   
 			if (item.id === id) {
-				return { ...item, [prop]: !item[prop] }
-			}
-			return item
-		})
-		setdata(newArr)
+       return { ...item, [prop]: !item[prop] }
+      }
+       return item
+    })
+
+    
+    localStorage.setItem('like_card' , JSON.stringify(newArr))
+    setdata(newArr)
+	
 	}
 
 
@@ -87,8 +102,8 @@ const Card = ({ MainOptions }) => {
               <FontAwesomeIcon
                 id={id}
                 className={` absolute right-4 top-4 fa-2x  ${likes ? 'text-[blue]' : 'text-[#3a91d3]'} `}
-                onClick={e => onToggleProp(id, e.currentTarget.getAttribute('asomiddin-toggle'))}
-                asomiddin-toggle='likes'
+                onClick={e => onToggleProp(id, e.currentTarget.getAttribute('data-toggle'))}
+                data-toggle='likes'
                 icon={faHeart}
               />
             </div>
