@@ -37,7 +37,7 @@ const CategoryApi = ({link}) => {
         price: item.price + '0' + ' ' + 'UZS',
         title: item.title,
         v:item._v,
-        likes: like
+        likes: false
       }))
       setdata(newArr);
       setIsloading(false)
@@ -54,20 +54,17 @@ const CategoryApi = ({link}) => {
   }, [])
 
 
-  const showLike = (id) => {
-    setdata((prev) => {
-      return prev.forEach((item) => {
-        if (item.id === id) {
-          return setdata(({ ...prev, likes: setLike(true) }))
-        }
-      })
-    })
-  }
+  const onToggleProp = (id, prop) => {
+		console.log(prop , id);
+		const newArr = data.map(item => {
+			if (item.id === id) {
+				return { ...item, [prop]: !item[prop] }
+			}
+			return item
+		})
+		setdata(newArr)
+	}
 
-  // const showLike = (id) => {
-
-  //        console.log( id);
-  // }
 
   const showOnebuy = () => {
     setOneBuy(true)
@@ -80,12 +77,14 @@ const CategoryApi = ({link}) => {
   return (
     <div className='flex flex-wrap sm:gap-5 px-[10px]  gap-8 justify-center relative right-[-14px] pt-[50px] mx-auto max-w-[1500px]'>
       {isLoading && <Loading />}
-      {data.map(({ image, title, price, id }) => {
+      {data.map(({ image, title, price, id , likes}) => {
         return <div key={id} className="relative sm:w-[300px] mx-auto w-[330px]  sm:h-[350px] h-[390px] mb-6 text-center bg-[rgba(224,224,224,0.95)] rounded px-6 py-[20px]">
           <img className='w-[350px] h-[140px] object-contain  mb-[10px]' src={image} alt="" />
-          <FontAwesomeIcon onClick={() => {
-            showLike(id)
-          }} className={` absolute right-4 top-4 fa-2x ${like ? 'text-[blue]' : 'text-[#b3dbe9]'} `} icon={faHeart} />
+          <FontAwesomeIcon id={id}
+                className={` absolute right-4 top-4 fa-2x  ${likes ? 'text-[blue]' : 'text-[#3a91d3]'} `}
+                onClick={e => onToggleProp(id, e.currentTarget.getAttribute('data-toggle'))}
+                data-toggle='likes'
+                icon={faHeart}/>
           <h1>{title}</h1>
           <span>{price}</span>
           <br />
